@@ -65,3 +65,10 @@ More details about bots and BotFather: https://core.telegram.org/bots#botfather
 ### Price changes
 
 This adapter also reports **price changes** when price tracking is enabled (Settings > Price tracking, off by default). A price change notification carries the old price, the new price and the percentage, and says whether the price went up or down. Changes smaller than the configured threshold are recorded in the listing's price history but are not sent, so rounding noise does not reach you.
+
+#### What a notification looks like
+Each listing arrives with its photo, the address, price and size, the travel time to your saved places on its own line (when it is known), and a link that names the portal it opens, e.g. "Open on kleinanzeigen.de".
+
+**Map:** a listing whose location is known is sent as an album of two pictures: the listing photo and a small map with the listing (red pin, labelled with its price) and your saved places (blue dots, labelled with the travel time, e.g. "Work · 40 min"). The map is drawn from OpenStreetMap tiles (© OpenStreetMap contributors), softened so the pins stand out; set `FREDY_MAP_TILE_URL` (with `{z}`, `{x}`, `{y}`, and optionally `{r}` for `@2x` high-density tiles) to use another tile server. Tick "Do not attach a map" to send the photo only. When the map cannot be drawn, the listing is sent without it.
+
+**Open in Fredy:** the link to Fredy's own page is only added when the Base URL in the general settings is one a phone can open. Loopback (`localhost`, `127.0.0.1`) and Docker-internal addresses (such as `172.17.0.1`) are left out.
